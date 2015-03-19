@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>增加机房</title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<css file="__PUBLIC__/style/addHouse.css"/>
+<js file="__PUBLIC__/js/addHouse.js"/>
+</head>
+<body>
+<div id="add">
+	<form action="<{:U('./Home/Create/addHouseHandle')}>" method="post" name="addHouse">
+		<table border="0" >
+			<tr>
+				<th colspan="4">增 加 机 房</th>
+			</tr>
+			<tr>
+				<td>机房名称:&nbsp;</td>
+				<td><input type="text" size="20" name="houname"/></td>
+				<td>公司名称:&nbsp;</td>
+				<td><input type="text" size="20" name="company"/></td>
+			</tr>
+			<tr>
+				<td>机房地址:&nbsp;</td>
+				<td><input type="text" size="20" name="address"/></td>
+				<td>联系人:&nbsp;</td>
+				<td><input type="text" size="20" name="contact"/></td>
+			</tr>
+			<tr>
+				<td>联系电话:&nbsp;</td>
+				<td><input type="text" size="20" name="telphone"/></td>
+				<td>联系QQ:&nbsp;</td>
+				<td><input type="text" size="20" name="linkqq"/></td>
+			</tr>
+			<tr>
+				<td>机房带宽:&nbsp;</td>
+				<td><input type="text" size="20" value="0" name="bandwidth"/></td>
+				<td>带宽价格:&nbsp;</td>
+				<td>
+					<input type="text" size="20" value="0" name="price"/>
+				</td>
+			</tr>
+			<tr>
+				<td>所在区域:&nbsp;</td>
+				<td>
+					<select name='place'>
+						<option value="0">=请选择=</option>
+						<foreach name='placeList' item='place'>
+							<option value="<{$key}>"><{$place}></option>
+						</foreach>
+					</select>
+				</td>
+				<td>多余占位:&nbsp;</td>
+				<td><input type="text" size="20" value="此项不填" name="price" disabled="true"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="sub" value="增加" onclick="return check_submit()"/></td>
+				<td colspan="2" style="text-align:left;padding-left:10px;">
+					<input type="reset" name="reset" value="重置"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+#add{
+	margin:0 auto;
+	vertical-align: middle;
+	padding:0 auto;
+	height:50%;
+}
+#add table{
+	margin:0 auto;
+	font-size:14px;
+}
+#add table tr {
+	height:30px;
+	line-height: 30px;
+}
+#add table tr td {
+	width:100px;
+	text-align:right;
+}
+#add a:link,#add a:visited{
+	display:block;
+	text-decoration:none;
+	}
+.myinput{
+	height:25px;
+	width:250px;
+}
+option{
+	height:22px;
+	width:223px;
+}

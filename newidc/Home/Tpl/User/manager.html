@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>修改密码</title>
+<js file="__PUBLIC__/js/jquery.js"/>
+<script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+<css file="__PUBLIC__/style/style.css"/>
+<css file="__PUBLIC__/style/manager.css" />
+<css file="__PUBLIC__/style/addCupboard.css"/>
+<js file="__PUBLIC__/js/user.js"  />
+</head>
+<body>
+	<div id="add">
+		<form action="<{:U(APP_NAME .'/User/managerHandle')}>" name="chgpassword" target="" method="post" onsubmit="return changepassword()">
+			<table border="0">
+				<tr>
+					<th colspan="4">修 改 密 码</th>
+				</tr>
+				<tr>
+					<td>帐号:</td>
+					<td><input type="text" size="20" name='loginname' readonly="readonly" value="<{:session('username')}>"></td>
+				</tr>
+				<tr>
+					<td>原密码:</td>
+					<td><input type="password" name='oldpassword' value="" autoComplete="off"></td>
+				</tr>
+				<tr>
+					<td>新密码:</td>
+					<td><input type="password" name='password' value="" autoComplete="off"></td>
+				</tr>
+				<tr>
+					<td>确认新密码:</td>
+					<td><input type="password" name='password1' value="" autoComplete="off"></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" name="" value="修改" />&nbsp;&nbsp;
+					<input type="reset" name='' value="重置"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

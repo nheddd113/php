@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+		<script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+		<css file="__PUBLIC__/style/monitor.css"/>
+		<js file="__PUBLIC__/js/monitor.js"/>
+	</head>
+	<body>
+		<div id="mo">
+			<table border="0">
+				<tr id="firstline"><th colspan="4" >各国监控列表</th></tr>
+				<foreach name='monitorList' item='monitor'>
+					<div style="display:none"><{$classid = $key % 2==0?'tr_1':'tr_2'}></div>
+					<tr class="<{$classid}>" name="<{$classid}>">
+						<td style="text-align:right;padding-right:10px;"><{$monitor.name}></td>
+						<td style="padding-left:10px;"><a href="<{$monitor.nagios}>" target="_blank">nagios</a></td>
+						<td style="padding-left:10px;"><a href="<{$monitor.cacti}>" target="_blank">cacti</a></td>
+						<td style="padding-left:10px;">
+							<a href="<{:U(APP_NAME . '/Monitor/modify',array('id'=>$monitor['id']))}>" target="pageContent">修改</a>
+							<a style="padding-left:20px;" href="#" onclick="return deleteMonitor('__URL__/deleteMonitor',<{$monitor['id']}>);" >删除</a>
+						</td>
+					</tr>
+				</foreach>
+			</table>
+		</div>
+	</body>
+</html>

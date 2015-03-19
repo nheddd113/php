@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'time', 1 => 'data', 2 => 'updatetime', '_autoinc' => false, '_pk' => 'time', '_type' => array ( 'time' => 'varchar(20)', 'data' => 'text', 'updatetime' => 'timestamp', ), );?>

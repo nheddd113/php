@@ -1,0 +1,18 @@
+<div class="jifang">
+<h3 class="title">IDC后台管理</h3>
+<foreach name='house' item='value'>
+	<div class="list">
+		<span>
+		<input type="button" class="but" value="+" name="box<{$value.id}>" />
+			<a href="<{:U('Home/Search/house/',array('houid'=>$value[id]))}>" ><{$value.houname}></a>
+		</span>
+	</div>
+	<div class="jg" id="box<{$value.id}>" style="display:none">
+		<foreach name='cupborad' item='jg_name'>
+			<if condition ="$value[id] eq $jg_name[houid]">
+				<p><a href="#"><{$jg_name.cupname}></a></p>
+			</if>
+		</foreach>
+	</div>
+</foreach>
+</div>

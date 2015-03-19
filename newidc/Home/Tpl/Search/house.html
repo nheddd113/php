@@ -1,0 +1,46 @@
+<html>
+<head>
+<title><{$title}></title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/style.css" />
+</head>
+<body>
+
+<div class="content">
+	<table border="0" id="conttable">
+		<tr id="firstline">
+		  <th style="width:3%;">序号</th>
+		  <th style="width:8%;">机柜名称</th>
+		  <th style="width:8%;">所属机房</th>
+		  <th style="width:8%;">机位总数</th>
+		  <th style="width:8%;">创建时间</th>
+		  <th style="width:18%;">备注</th>
+		  <th style="width:5%;">操作</th>
+		</tr>
+			<foreach name='cupboard' item='cupboardvalue'><{/* 遍历服务器出来 */}>
+				<div style="display:none"><{$classid = $key % 2==0?1:2}></div>
+				<tr id="<{$classid}>" class="tr_<{$classid}>" name="tr_<{$classid}>">
+				  <td style="width:3%;"><{$key+1}></td>
+				  <td style="width:8%;"><a href="<{:U('Home/Search/cupBoard',array('cupid'=>$cupboardvalue[id]))}>"><{$cupboardvalue.cupname}></a></td>
+				  <td style="width:8%;"><{$cupboardvalue.houname}></td>
+				  <td style="width:8%;"><{$cupboardvalue.seatnum}></td>
+				  <td style="width:8%;"><{$cupboardvalue.createtime}></td>
+				  <td style="width:18%;"><{$cupboardvalue.remark}></td>
+				  <td style="width:5%;">
+				  	  <gt name="Think.session.level" value="99">
+					      	<a href="<{:U(APP_NAME . '/Public/amendCup',array('id'=>$cupboardvalue['id']))}>">[详情]</a>
+					      	<a href="__URL__/deletecup/id/<{$cupboardvalue[id]}>" onclick="return deletecup()">[删除]</a>
+				      <else/>
+				      		<a href="<{:U(APP_NAME . '/Public/amendCup',array('id'=>$cupboardvalue['id']))}>">[详情]</a>
+				      </gt>
+				  </td>
+				</tr>
+			</foreach>
+		<tr style="background-color:fff">
+		  <td colspan="7" align="right" id="td" style="padding-right:15px;"><{$page}></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

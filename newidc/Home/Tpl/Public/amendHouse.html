@@ -1,0 +1,86 @@
+<html>
+<head>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/style.css" />
+<script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+<css file="__PUBLIC__/style/addCupboard.css" />
+<js file="__PUBLIC__/js/amendCup.js"/>
+<script>
+	var addSeatUrl = '<{:U(APP_NAME . '/Ajax/addOrdelSeat');}>';
+</script>
+</head>
+	<body>
+		<form id="houAction" name="amendHouse" onsubmit="return submitValidate()" action="__URL__/amendHouseHandle" method="post">			
+			<table class="query_form_table" border="1" cellspacing="3" cellpadding="3" width="600" align="left" style="font-size: 12px; ">
+					<tr style="color: #4d6b72; font-weight: bold">
+						<td height="24" colspan="4" style=" BACKGROUND-COLOR: #cae8ea; " align="left">
+							修改机房
+						</td>
+					</tr>
+					<tr class="urlHref" style="background-color: #f7f8f9">
+						<th width="65" height="25" align="right">编&nbsp;&nbsp;&nbsp;&nbsp;号：</th>
+						<td><input type="text" name="id" value="<{$house.id}>" readonly="readonly" id="id" style="background-color:#D3D3D3;"/> </td>
+						<th  align="right" style="padding-left: 5px">创建日期：</th>
+						<td>
+					  			
+					  		<input type="text" name="createtime" value="<{$house.createtime}>" disabled="disabled" id="idcHouBean.CTime" />
+						</td>
+					</tr>
+					<tr class="urlHref" style="background-color: #f7f8f9">
+						<th width="65" height="25" align="right">机房名称：</th>
+						<td  align="left" style="padding-left: 5px">
+							<input type="hidden" name="houname" value="<{$house.houname}>" id="houname"/>
+							<input type="text" name="houname" value="<{$house.houname}>" id="houname" />
+						</td>
+						<th width="65" align="right">公司名称：</th>
+						<td  align="left" style="padding-left: 5px">
+							<input type="text" name="company" value="<{$house.company}>" id="company"/>
+						</td>
+					</tr>
+					<tr>
+						<th width="65" height="25" align="right">公司地址：</th>
+						<td  align="left" style="padding-left: 5px">
+							<input type="text" name="address" value="<{$house.address}>" id="address" />
+						</td>
+						<th width="65" align="right">公司电话：</th>
+						<td  align="left" style="padding-left: 5px">
+							<input type="text" name="telphone" value="<{$house.telphone}>" id="telphone"/>
+						</td>
+					</tr>
+					<tr>
+						<th width="65" height="25" align="right">联&nbsp;系&nbsp;人：</th>
+						<td   align="left" style="padding-left: 5px">
+							<input type="text" name="contact" value="<{$house.contact}>" id="contact"/>
+						</td>
+						<th  height="25" align="right">联&nbsp;系&nbsp;QQ：</th>
+						<td  width="160"align="left" style="padding-left: 5px">
+							<input type="text" name="linkqq" value="<{$house.linkqq}>" id="linkqq"/>
+						</td>
+					</tr>
+					<tr>
+						<th width="65" height="25" align="right">机房带宽：</th>
+						<td   align="left" style="padding-left: 5px">
+							<input type="text" name="bandwidth" value="<{$house.bandwidth}>" id="bandwidth"/>
+						</td>
+						<th  height="25" align="right">带宽单价：</th>
+						<td  width="160"align="left" style="padding-left: 5px">
+							<input type="text" name="price" value="<{$house.price}>" id="price"/>
+						</td>
+					</tr>
+					<tr>
+						<th  height="25" align="right">备&nbsp;&nbsp;&nbsp;&nbsp;注：</th>
+						<td colspan="3"  width="160"align="left" style="padding-left: 5px">
+							<input type="text" name="remark" value="<{$house.remark}>" id="remark"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4"  align="center" style="padding-left: 5px">
+							<input type="submit" id="houAction_0" value="修改" style="width:80px;"/>
+						</td>
+					</tr>
+			</table>
+		</form>
+		
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<js file="__PUBLIC__/js/jquery.js" />
+<css file="__PUBLIC__/style/amount.css" />
+<js file="__PUBLIC__/js/chart/js/highcharts.js" />
+<js file="__PUBLIC__/js/chart/js/modules/exporting.js" />
+<script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+<js file="__PUBLIC__/js/datePicker/WdatePicker.js"/>
+<script>
+var getAmountUrl = "<{:U(APP_NAME . '/Ajax/getAmountCount')}>";
+</script>
+<js file="__PUBLIC__/js/amount.js" />
+<p>&nbsp;</p>
+<div style="float:right;margin-right:35%;">
+	<a class="button" onclick="this.blur();return false;" href="" id="showPic"><span>查询</span></a>
+</div>
+<div style="float:right;">
+	<select id="objlist">
+		<option value="0" selected>请选择</option>
+		<option value="1">项目费用比例图</option>
+		<option value="2">每日项目费用</option>
+	</select>
+	<select id="costType">
+		<option value="1" selected>包含服务器折旧费</option>
+		<option value="2">不包含服务器折旧费</option>
+		<option value="3">服务器折旧费</option>
+	</select>
+	&nbsp;
+</div>
+
+<div style="text-align:center;float:right">
+	起始时间:<input type="text" name="start" onClick="WdatePicker()" value="<{:date('Y-m-01',time())}>" />
+	至 <input type="text" name="end" onClick="WdatePicker()" value="<{:date('Y-m-d')}>" />
+	
+	&nbsp;
+</div>
+<br><br>
+<div class="div" id="container" style="height: 600px;display:none;"></div>

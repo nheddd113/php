@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+#add{
+	margin:0 auto;
+	vertical-align: middle;
+}
+#add table{
+	margin:0 auto;
+	font-size:14px;
+}
+#add table tr {
+	height:30px;
+	line-height: 30px;
+}
+#add table tr td {
+	width:100px;
+	text-align:right;
+}
+.myinput{
+	height:25px;
+	width:250px;
+}
+option{
+	height:20px;
+	width:223px;
+}

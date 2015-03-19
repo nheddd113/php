@@ -1,0 +1,20 @@
+
+#virHostBox table{
+	width:600px;
+	font-size: 12px;
+}
+
+#virHostBox table tr{
+	font-size:12px;
+	border: solid 1px #666;
+}
+#virHostBox table tr td{
+	padding:0px 8px 0px 8px;
+	height:27px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-align:center;
+}
+#virHostBox table tr td a:link,.login a:visited{
+	text-decoration:none;
+}

@@ -1,0 +1,52 @@
+<html>
+<head>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/style.css" />
+<js file="__PUBLIC__/js/showip.js" />
+</head>
+<div class="content">
+	<table border="0" id="conttable">
+		<tr id="firstline">
+		  <th style="width:3%;">序号</th>
+		  <th style="width:8%;">机房名称</th>
+		  <th style="width:8%;">公司名称</th>
+		  <th style="width:8%;">机房地址</th>
+		  <th style="width:8%;">联系电话</th>
+		  <th style="width:8%;">联系QQ</th>
+		  <th style="width:8%;">联系人</th>
+		  <th style="width:8%;">创建时间</th>
+		  <th style="width:8%;">机房带宽</th>
+		  <th style="width:8%;">带宽单价</th>
+		  <th style="width:8%;">备注</th>
+		  <th style="width:10%;">操作</th>
+		</tr>
+			<foreach name='houseList' item='house'><{/* 遍历服务器出来 */}>
+				<div style="display:none"><{$classid = $key % 2==0?1:2}></div>
+				<tr id="<{$classid}>" class="tr_<{$classid}>" name="tr_<{$classid}>">
+				  <td style="width:3%;"><{$key+1}></td>
+				  <td style="width:8%;"><a href="<{:U('Home/Search/house',array('houid'=>$house['id']))}>"><{$house.houname}></a></td>
+				  <td style="width:8%;"><{$house.company}></td>
+				  <td style="width:8%;"><{$house.address}></td>
+				  <td style="width:8%;"><{$house.telphone}></td>
+				  <td style="width:8%;"><{$house.linkqq}></td>
+				  <td style="width:8%;"><{$house.contact}></td>
+				  <td style="width:8%;"><{$house.createtime}></td>
+				  <td style="width:8%;"><{$house.bandwidth}></td>
+				  <td style="width:8%;"><{$house.price}></td>
+				  <td style="width:8%;"><{$house.remark}></td>
+				  <td style="width:5%;">
+				  	  <gt name="Think.session.level" value="99">
+					      	<a href="<{:U(APP_NAME . '/Public/amendHouse',array('id'=>$house['id']))}>">[详情]</a>
+					      	<a href="__URL__/deleteHouse/id/<{$house.id}>" onclick="return deletehouse();">[删除]</a>
+				      <else/>
+				      		<a href="<{:U(APP_NAME . '/Public/amendHouse',array('id'=>$house['id']))}>">[详情]</a>
+				      </gt>
+				  </td>
+				</tr>
+			</foreach>
+		<tr style="background-color:fff">
+		  <td colspan="7" align="right" id="td" style="padding-right:15px;"><{$page}></td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>增加机房</title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<css file="__PUBLIC__/style/addCupboard.css"/>
+<js file="__PUBLIC__/js/addHost.js"/>
+<script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+<script>
+	var getTempIdUrl = '<{:U(APP_NAME . '/Ajax/getTempInfo')}>';
+</script>
+</head>
+<body>
+<div id="add">
+	<form action="<{:U('Home/Create/addHostHandle')}>" method="post" name="addHost">
+		<table border="0" >
+			<tr>
+				<th colspan="4">增 加 主 机</th>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align:center">
+					模板:
+					<foreach name='template' item='value'>
+						<input onclick="return writeinfo(this.value);" type="button" value="<{$value.name}>" style="width:70px;" /> &nbsp;
+					</foreach>
+				</td>
+			</tr>
+			<tr>
+				<td>资产编码:&nbsp;</td>
+				<td><span><input type="text" size="20" name="hostid"/></span></td>
+				<td>服务编码:&nbsp;</td>
+				<td><input type="text" size="20" name="sertag"/></td>
+			</tr>
+			<tr>
+				<td>所属机房:&nbsp;</td>
+				<td>
+					<select name='houid'>
+						<option value='0' selected="selected">请选择</option>
+						<foreach name='house' item='value'>
+							<option value='<{$value.id}>'><{$value.houname}></option>
+						</foreach>
+					</select>
+				</td>
+				<td>CPU:&nbsp;</td>
+				<td><input type="text" size="20" name="cpu"/></td>
+			</tr>
+			<tr>
+				<td>硬盘:&nbsp;</td>
+				<td><input type="text" size="20" name="disk"/></td>
+				<td>内存:&nbsp;</td>
+				<td><input type="text" size="20" name="mem"/></td>
+			</tr>
+			<tr>
+				<td>宿主机:&nbsp;</td>
+				<td style="text-align:left">
+					<input type="radio" size="20" value="0" name="ishost" id="ishost1" checked="checked"/>
+					<label for="ishost1">否</label>
+					<input type="radio" size="20" value="0" name="ishost" id="ishost2"/>
+					<label for="ishost2">是</label>
+				</td>
+				<td>托管:&nbsp;</td>
+				<td style="text-align:left">
+					<input type="radio" size="20" value="0" name="ismanager" id="ismanager1" checked="checked"/>
+					<label for="ismanager1">否</label>
+					<input type="radio" size="20" value="0" name="ismanager" id="ismanager2"/>
+					<label for="ismanager2">是</label>
+				</td>
+			</tr>
+			<tr>
+				<input type="hidden" name='templateid' value="1" />
+				<td colspan="2"><input type="submit" name="sub" value="增加" onclick="return check_submit()"/></td>
+				<td colspan="2" style="text-align:left;padding-left:10px;">
+					<input type="reset" name="reset" value="重置"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>

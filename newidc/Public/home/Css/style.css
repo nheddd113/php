@@ -1,0 +1,22 @@
+body{
+	background: #fff;
+}
+.div{
+	margin:0 auto;
+	width:1000px;
+	min-height: 500px;
+	text-align:center;
+}
+
+.table{
+	font-size:12px;
+	width:800px;
+	border-collapse:collapse;
+	margin:0 auto;
+}
+.table tr {
+	height:25px;
+}
+.table td {
+	text-align:center;
+}

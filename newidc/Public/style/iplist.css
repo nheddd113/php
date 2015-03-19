@@ -1,0 +1,26 @@
+/* CSS Document */
+.iplist{
+	font-size:12px;
+	float:right;
+	width:87%;
+}
+
+.iplist a:link,.iplist a:visited{
+	text-decoration:none;
+}
+.log a:link,.log a:visited{
+	text-decoration:none;
+}
+.iplist table{
+	font-size:12px;
+	text-align:center;
+	}
+.iplist table tr{
+
+}
+.iplist table tr td{
+	padding:0px 8px 0px 8px;
+	height:27px;
+	white-space:nowrap;
+	overflow:hidden;
+}

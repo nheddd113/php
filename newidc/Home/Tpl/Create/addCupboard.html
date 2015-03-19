@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>增加机房</title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<css file="__PUBLIC__/style/addCupboard.css"/>
+<js file="__PUBLIC__/js/addCupboard.js"/>
+</head>
+<body>
+<div id="add">
+	<form action="<{:U('./Home/Create/addCupboardHandle')}>" method="post" name="addCupboard">
+		<table border="0" >
+			<tr>
+				<th colspan="4">增 加 机 柜</th>
+			</tr>
+			<tr>
+				<td>机柜名称:&nbsp;</td>
+				<td><input type="text" size="20" name="cupname"/></td>
+				<td>所属机房:&nbsp;</td>
+				<td>
+					<select name='houid'>
+						<option value='0' selected="selected">请选择</option>
+						<foreach name='house' item='value'>
+							<option value='<{$value.id}>'><{$value.houname}></option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>机位:&nbsp;</td>
+				<td><input type="text" size="20" name="seatnum" value='16' onclick='this.value=""'/></td>
+				<td>单价:&nbsp;</td>
+				<td><input type="text" size="20" value='填写该机柜的价格' name="price" onclick="this.value=''"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="sub" value="增加" onclick="return check_submit()"/></td>
+				<td colspan="2" style="text-align:left;padding-left:10px;">
+					<input type="reset" name="reset" value="重置"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>

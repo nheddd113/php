@@ -1,0 +1,25 @@
+#showip{
+	font-size: 12px;
+	text-align: center;
+}
+#showip tr {
+	height:25px;
+}
+option{
+	width:150px;
+	height:25px;
+	vertical-align: middle;
+}
+
+a:link,a:visited{
+	text-decoration:none;
+	color:#057AFC;
+}
+input{
+	width: 150px;
+	height:25px;
+	vertical-align: middle;
+}
+input button{
+	width:50px;
+}

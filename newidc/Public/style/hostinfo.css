@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+option{
+	height:23px;
+	vertical-align: middle;
+}
+#searchops {
+	height:23px;
+	width:70px;
+	vertical-align: bottom;
+}
+a:link,.list a:visited{
+	text-decoration:none;
+	color:blue;
+}

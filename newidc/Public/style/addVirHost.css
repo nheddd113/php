@@ -1,0 +1,48 @@
+
+option,input{
+	height:23px;
+	vertical-align: middle;
+}
+select{
+	width:132px;
+}
+.textBack{
+	background-color: #CDC5BF;
+}
+.textWhite{
+	width:180px;
+}
+#mainip{
+position: relative ;
+}
+.addVirDiv{
+	position: relative ;
+	background-color:#eeeeff;
+	height:100%;
+}
+
+.addHostTable{
+	width:100%;
+	border-collapse:collapse; 
+	border-top:solid 1px #666;
+	border-bottom:solid 1px #666;
+}
+
+.addHostTable th{
+	font-size:12px;
+	font-weight:normal;
+	border-bottom:solid 1px #8c8c8c;
+	background-color:#6EC2FD;
+	font-weight:400;
+	font-size:13px;
+	color:#000;
+	height:30px;
+	width:12%;
+}
+.addHostTable td{
+	background-color:#eeeeff;
+	border-bottom:solid 1px #8c8c8c;
+	border-left:solid 1px #fff;
+	width:21%;
+	height:25px;
+}
