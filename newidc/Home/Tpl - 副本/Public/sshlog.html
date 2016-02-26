@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<js href="__PUBLIC__/js/jquery.js" />
+<js href="__PUBLIC__/js/salt.js" />
+<css href="__PUBLIC__/style/salt.css" />
+<body>
+<div>
+    <form name="search" method="get" action="">
+        <div>
+        登陆名: <input type="text" name="login_name" value="<{$login_name}>"/>
+        时间: <input type="text" name="login_time" value="<{$login_time}>"/>
+        <input type="submit" value="查询" />
+        </div>
+    </form>
+</div>
+<table width="100%" id="master_table">
+    <tr id="firstline">
+        <th width="5%">序号</th>
+        <th width="10%">登入帐号</th>
+        <th width="15%">目标服务器IP</th>
+        <th width="10%">端口服务</th>
+        <th width="15%">目标主机名</th>
+        <th width="10%">请求登陆入IP</th>
+        <th width="15%">请求登陆入时间</th>
+    </tr>
+    <volist name="list" id="vo">
+    <tr class="tr_<{$mod}>" mod="<{$mod}>">
+        <td><{$vo.id}></td>
+        <td><{$vo.login_name}></td>
+        <td><{$vo.dest_ip}></td>
+        <td>sshd</td>
+        <td><{$vo.dest_hostname}></td>
+        <td><{$vo.request_ip}></td>
+        <td><{$vo.login_time}></td>
+        <!-- <td>[<a href="<{:U(APP_NAME . '/' . MODULE_NAME . '/range',array('id'=>$vo[id]))}>">批量操作</a>] |
+            [<a href="<{:U(APP_NAME . '/' . MODULE_NAME . '/key',array('id'=>$vo[id]))}>">Key管理</a>] |
+            [<a href="<{:U(APP_NAME . '/' . MODULE_NAME . '/mission',array('id'=>$vo[id]))}>">任务查询</a>]
+        </td> -->
+    </tr>
+    </volist>
+    <tr>
+        <td colspan="7" style="text-align:right"><{$page}></td>
+    </tr>
+</table>
+</body>
+</html>

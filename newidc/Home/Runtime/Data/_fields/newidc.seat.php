@@ -1,1 +1,0 @@
-<?php	return array ( 0 => 'id', 1 => 'cupid', 2 => 'seatid', 3 => 'state', 4 => 'createtime', 5 => 'changetime', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(11)', 'cupid' => 'int(11)', 'seatid' => 'int(11)', 'state' => 'tinyint(4)', 'createtime' => 'timestamp', 'changetime' => 'int(10)', ), );?>

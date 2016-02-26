@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>游奇IDC管理平台</title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/subjquery.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/style.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/top.css" />
+</head>
+<body>
+<div class="indextop">
+<img src="__PUBLIC__/images/logo.jpg">
+<ul id="nav">
+	<li><a href="" onclick="return false;">新建列表</a>
+		<ul>
+			<li><a href="<{:U(APP_NAME . '/Create/addHouse')}>" target="pageContent">新建机房</a></li>
+			<li><a href="<{:U(APP_NAME . '/Create/addCupboard')}>" target="pageContent">新建机柜</a></li>
+			<li><a href="<{:U(APP_NAME . '/Create/addHost')}>" target="pageContent">新建服务器</a></li>
+			<li><a href="<{:U(APP_NAME . '/Create/addIp')}>" target="pageContent">新建IP段</a></li>
+			<li><a href="<{:U(APP_NAME . '/Create/addGame')}>" target="pageContent">新建游戏</a></li>
+			<li><a href="<{:U(APP_NAME . '/Create/hostTempLate')}>" target="pageContent">新建主机模板</a></li>
+		</ul>
+	</li>
+	<li><a href="" onclick="return false;">查看列表</a>
+		<ul>
+			<li><a href="<{:U(APP_NAME . '/Public/showip')}>" target="pageContent">IP列表</a></li>
+			<li><a href="<{:U(APP_NAME . '/Public/showHouse')}>" target="pageContent">机房列表</a></li>
+			<li><a href="<{:U(APP_NAME . '/Search/search',array('ishost'=>1))}>" target="pageContent">宿主机列表</a></li>
+			<li><a href="<{:U(APP_NAME . '/Public/showlog')}>" target="pageContent">日志列表</a></li>
+			<li><a href="<{:U(APP_NAME . '/Create/addOps')}>" target="pageContent">更新运营商</a></li>
+		</ul>
+	</li>
+	<gt name="Think.session.level" value="99">
+		<li><a href="" onclick="return false;">费用列表</a>
+			<ul>
+				<li><a href="<{:U(APP_NAME . '/Amount/index')}>" target="pageContent">费用查询</a></li>
+			</ul>
+		</li>
+	</gt>
+	<li><a href="" onclick="return false;">监控列表</a>
+		<ul>
+			<li><a href="<{:U(APP_NAME . '/Monitor/index')}>" target="pageContent">各国监控</a></li>
+			<li><a href="<{:U(APP_NAME . '/Monitor/addMonitor')}>" target="pageContent">增加监控</a></li>
+			<li><a href="<{:U(APP_NAME . '/Public/cdn')}>" target="pageContent">CDN推送</a></li>
+		</ul>
+	</li>
+  <li><a href="" onclick="return false;">Salt操作</a>
+    <ul>
+      <li><a href="<{:U(APP_NAME . '/Salt/minion')}>" target="pageContent">Minion管理</a></li>
+      <li><a href="<{:U(APP_NAME . '/Salt/single')}>" target="pageContent">单机任务执行</a></li>
+      <li><a href="<{:U(APP_NAME . '/Salt/submaster')}>" target="pageContent">子Master管理</a></li>
+    </ul>
+  </li>
+	<li><a href="" onclick="return false;">用户管理</a>
+		<ul>
+			<gt name="_SESSION['level']" value="49" >
+			<li><a href="<{:U(APP_NAME . '/User/index')}>" target="pageContent">用户列表</a></li>
+			<li><a href="<{:U(APP_NAME . '/User/adduser')}>" target="pageContent">增加用户</a></li>
+			</gt>
+      <eq name="Think.session.level" value="100">
+      <li><a href="<{:U(APP_NAME . '/Public/sshlog')}>" target="pageContent">服务器登陆日志</a></li>
+      </eq>
+			<li><a href="<{:U(APP_NAME . '/User/manager')}>" target="pageContent">修改密码</a></li>
+		</ul>
+	</li>
+</ul>
+  <div class="login">
+  当前用户:<span style="color:blue">[<{:session('realname')}>][<a href="<{:U(APP_NAME . '/Login/logout')}>" alt="退出">退出</a>]</span>
+  报警状态:<{$notify?'开启':'关闭'}>|<a href="<{:U(APP_NAME . '/Public/changeNotify',array('state'=>$notify))}>" ><{$notify?'关闭':'开启'}></a>
+  </div>
+</div>
+<{/*上面是TOP*/}>
+
+<div class="jifang" id="jifang">
+<h3 class="title">IDC后台管理</h3>
+<foreach name='house' item='value'>
+	<div class="list">
+		<span id="houseType">
+		<input type="button" class="but" value="+" name="box<{$value.id}>" />
+		</span>
+    <span id="houseType">
+    <a href="<{:U(APP_NAME . '/Search/house/',array('houid'=>$value['id']))}>" target="pageContent"><{$value.houname}></a>
+    </span>
+	</div>
+	<div class="jg" id="box<{$value['id']}>" style="display:none">
+		<foreach name='cupborad' item='jg_name'>
+			<if condition ="$value['id'] eq $jg_name['houid']">
+				<p><a href="<{:U(APP_NAME . '/Search/cupBoard',array('cupid'=>$jg_name['id'],'houid'=>$value['id']))}>" target="pageContent"><{$jg_name.cupname}></a></p>
+			</if>
+		</foreach>
+	</div>
+</foreach>
+</div>
+
+<{/*上面是机房列表*/}>
+
+<div class="count">
+  <table border="0">
+    <tr>
+      <td style="width:50%"><table width="600"  border="0">
+          <tr>
+            <td >物理机:</td>
+            <td><a href="<{:U(APP_NAME . '/Search/search')}>" target="pageContent">总数(<{$count['notWCOUNT']+$count['WCOUNT']+$count['notWHOST']+$count['WHOST']}>)</a></td>
+            <td colspan="5">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>非托管:</td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'ishost'=>0))}>" target="pageContent">总数(<{$count['notWCOUNT'] + $count['notWHOST']}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'status'=>1,'ishost'=>0))}>" target="pageContent">闲置(<{$count.notWXZ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'status'=>0,'ishost'=>0))}>" target="pageContent">下架(<{$count.notWXJ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'hostype'=>1,'ishost'=>0))}>" target="pageContent">申请(<{$count.notWSQ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'hostype'=>2,'ishost'=>0))}>" target="pageContent">运营(<{$count.notWYY}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'ishost'=>1))}>"  target="pageContent">宿主机(<{$count.notWHOST}>)</a></td>
+          </tr>
+          <tr>
+            <td style="padding-left:15px;">托管:</td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'ishost'=>0))}>" target="pageContent">总数(<{$count['WCOUNT'] + $count['WHOST']}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'status'=>1,'ishost'=>0))}>" target="pageContent">闲置(<{$count.WXZ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'status'=>0,'ishost'=>0))}>" target="pageContent">下架(<{$count.WXJ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'hostype'=>1,'ishost'=>0))}>" target="pageContent">申请(<{$count.WSQ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'hostype'=>2,'ishost'=>0))}>" target="pageContent">运营(<{$count.WYY}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'ishost'=>1))}>"  target="pageContent">宿主机(<{$count.WHOST}>)</a></td>
+          </tr>
+        </table></td>
+      <td rowspan="2">
+          <form name="queryform" target="pageContent" action="<{:U(APP_NAME . '/Search/postHandle')}>" method="post" >
+          <div class="form"> <input id="q_contnet" type="text" size="15" name="query" style="height:23px;" onfocus="this.value=''"/>
+            <input type="submit" name="submit" value="查询" style="width:70px;"/>
+          </div>
+            <select name="query_type" size="1" id="query_type" style="height:23px;margin-top:30px;float:right">
+              <option value="mainip" selected="selected">按IP查询</option>
+              <option value="hostid" >按资产编号查询</option>
+              <option value="sertag" >按服务编号查询</option>
+              <option value="remark" >按备注查询</option>
+              <option value="log" >查询日志</option>
+            </select>
+        </form>
+     </td>
+    </tr>
+    <tr>
+      <td><table width="600" border="0">
+          <tr>
+            <td style="width:95px;">虚拟机:</td>
+            <td>总数(<{$count['notXCOUNT'] + $count['XCOUNT']}>)</td>
+            <td colspan="5">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>非托管:</td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'ishost'=>2))}>" target="pageContent">总数(<{$count['notXCOUNT']}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'status'=>1,'ishost'=>2))}>" target="pageContent">闲置(<{$count.notXXZ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'status'=>0,'ishost'=>2))}>" target="pageContent">下架(<{$count.notXXJ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'hostype'=>1,'ishost'=>2))}>" target="pageContent">申请(<{$count.notXSQ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>0,'hostype'=>2,'ishost'=>2))}>" target="pageContent">运营(<{$count.notXYY}>)</a></td>
+            <td style="visibility:hidden">宿主机()</td>
+          </tr>
+          <tr>
+          	<td>托管:</td>
+          	<td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'ishost'=>2))}>" target="pageContent"> 总数(<{$count['XCOUNT']}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'status'=>1,'ishost'=>2))}>" target="pageContent">闲置(<{$count.XXZ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'status'=>0,'ishost'=>2))}>" target="pageContent">下架(<{$count.XXJ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'hostype'=>1,'ishost'=>2))}>" target="pageContent">申请(<{$count.XSQ}>)</a></td>
+            <td><a href="<{:U(APP_NAME . '/Search/search',array('ismanager'=>1,'hostype'=>2,'ishost'=>2))}>" target="pageContent">运营(<{$count.XYY}>)</a></td>
+            <td style="visibility:hidden">宿主机()</td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+
+<{/*上面是统计列表*/}>
+<input type="hidden" value="<{$post}>" id="isPost" />
+<script type="text/javascript">
+	var isPost = $("#isPost").val();
+	if(isPost == '1'){
+		var astr = '<iframe id="pageContent" width="87%" scrolling="no" frameborder="0" name="pageContent" src="<{:U("Home/Search/searchHandle/",array("query_type"=>$where[query_type],"query"=>$where[query]))}>"></iframe>';
+	}else{
+		var astr = '<iframe id="pageContent" width="87%" scrolling="no" frameborder="0" name="pageContent" src="<{:U("Home/Search/search")}>"></iframe>';
+	}
+	document.write(astr);
+</script>
+</body>
+</html>

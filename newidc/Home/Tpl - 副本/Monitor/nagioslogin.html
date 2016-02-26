@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+        <css file="__PUBLIC__/style/addmonitor.css"/>
+        <js file="__PUBLIC__/js/addmonitor.js"/>
+        <script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+    </head>
+    <script>
+    var url = '<{$nagios}>';
+    $(document).ready(function(){
+        $.ajax({
+            type:'POST',
+            url:url,
+            beforeSend:function(request){
+                request.setRequestHeader('Authorization', 'Basic cFlRd2Q6OHUqJHkxLg==');
+            },
+            success:function(data,status){
+
+            },
+            error:function(request,status){
+                alert(request.getAllResponseHeaders());
+            }
+        });
+    });
+
+    </script>
+    <body>
+
+
+    </body>
+
+</html>

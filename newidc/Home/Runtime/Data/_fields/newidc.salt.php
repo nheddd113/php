@@ -1,1 +1,0 @@
-<?php	return array ( 0 => 'id', 1 => 'houseid', 2 => 'host', 3 => 'port', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(5) unsigned', 'houseid' => 'int(5)', 'host' => 'varchar(128)', 'port' => 'int(11)', ), );?>

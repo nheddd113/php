@@ -1,13 +1,13 @@
 $(document).ready(function(){
-	$("#showPic").click(function(){
+	$("#search").click(function(){
 		var typeValue = $("#objlist").val();
 		var costType = $("#costType").val();
 //		alert(typeValue);
 		if(typeValue == 0){
 			return false;
 		}
-		var startTime = $("input[name='start']").val();
-		var endTime = $("input[name='end']").val()
+		var startTime = $("#getAmount input[name='start']").val();
+		var endTime = $("#getAmount input[name='end']").val()
 		postData = {
 			type:typeValue,
 			costtype:costType,
@@ -53,7 +53,7 @@ $(document).ready(function(){
 			            },
 			            tooltip: {
 			        	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b><br>' +
-			        	    		'金额:<b>{point.y} 元</b>' 
+			        	    		'金额:<b>{point.y} 元</b>'
 			            },
 			            plotOptions: {
 			                pie: {
@@ -139,17 +139,17 @@ $(document).ready(function(){
 				            borderWidth: 0
 				        },
 				        series: amountdata
-				    });		
+				    });
 				}
 			});
 		}
 	});
 });
 function one(){
-	
+
 	return false;
 }
 function oneday(){
-	 
+
     return false;
 }

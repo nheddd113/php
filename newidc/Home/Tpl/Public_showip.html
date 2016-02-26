@@ -1,0 +1,587 @@
+<include file="Admin:header" />
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+        <div class="main-container">
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <include file="Admin:nav" />
+                <div class="main-content">
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                        </script>
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a href="/index.php">首页</a>
+                            </li>
+                            <li class="active">查看IP</li>
+                        </ul><!-- .breadcrumb -->
+
+                        <div class="nav-search" id="nav-search">
+                            <form class="form-search" id="search" method="post" action="<{:U('Search/postHandle')}>">
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <select name="query_type" class="nav-search-input">
+                                            <option <eq name="query_type" value="mainip">selected</eq> value="mainip">服务器IP</option>
+                                            <option <eq name="query_type" value="sertag">selected</eq> value="sertag">服务编码</option>
+                                            <option <eq name="query_type" value="hostid">selected</eq> value="hostid">资产编码</option>
+                                            <option <eq name="query_type" value="remark">selected</eq> value="remark">备注</option>
+                                            <option <eq name="query_type" value="log">selected</eq> value="log">日志</option>
+                                        </select>
+                                    </span>
+                                    <span class="input-icon">
+                                        <input type="text" name="query" value="<{$query}>" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                        <i class="icon-search nav-search-icon"></i>
+                                    </span>
+                                    <span class="input-icon">
+                                        <a href="javascript:$('#search').submit()"><i class="icon-zoom-in bigger-180"></i></a>
+                                    </span>
+                                </div>
+                            </form>
+                        </div><!-- #nav-search -->
+                    </div>
+                    <div class="page-content">
+                        <div class="page-header">
+                                <h1>
+                                <present name="housename">
+                                    <{$housename}>
+                                <else/>
+                                    搜索
+                                </present>
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                    <present name="cupname">
+                                        <{$cupname}>
+                                    <else/>
+                                        所有
+                                    </present>
+                                </small>
+                                <div class="pull-right widget-toolbar">
+                                    <a href="javascript:void(0)"  data-rel="tooltip" data-placement="top" title="增加IP" data-target="addIp" >
+                                        <i class="icon-plus bigger-300 red"></i>
+                                    </a>
+                                </div>
+                                </h1>
+                        </div><!-- /.page-header -->
+                        <div class="row">
+                            <div class="page-header">
+                                <h1 class="center">IP列表</h1>
+                            </div>
+                            <div class="page-header">
+                                <form class="form-search form-inline" method="POST" action="<{:U('Public/showip')}>">
+                                    <div style="line-height:30px;height:30px;">
+                                        <div class="col-sm-8"></div>
+                                        <div class="col-sm-1">
+                                            <input type="text" name="keyworld" placeholder="IP地址" class="col-sm-12" value="<{$keyworld}>" />
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <select name="houid" class="col-sm-12">
+                                                <option></option>
+                                                <volist name="house" id="vo">
+                                                    <option value="<{$vo.id}>" <eq name="map.houid" value="$vo['id']">selected</eq>><{$vo.houname}></option>
+                                                </volist>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <select name="state" class="col-sm-12" >
+                                                <option></option>
+                                                <option value="0" <eq name="map.state" value="0">selected</eq> >未使用</option>
+                                                <option value="1" <eq name="map.state" value="1">selected</eq> >已使用</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1 text-right">
+                                            <input type="submit" name="submit" value="查询" class="btn btn-sm btn-success">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <table id="dynamic-table"  class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-1">序号</th>
+                                        <th class="col-sm-2">电信地址</th>
+                                        <th class="col-sm-2">电信掩码</th>
+                                        <th class="col-sm-1">电信网关</th>
+                                        <th class="col-sm-2">创建时间</th>
+                                        <th class="col-sm-1">状态</th>
+                                        <th class="col-sm-2">所属机房</th>
+                                        <th class="col-sm-1">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="8">
+                                            <div class="checkbox"><label>
+                                            <input type="checkbox" id="checkall" name="checkall">
+                                            全选
+                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label>
+                                            <input type="checkbox" id="cancelall" name="cancelall">
+                                            全不选
+                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label>
+                                            <input type="checkbox" id="otherall" name="otherall">
+                                            反选
+                                            </label>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <button id="deleteip" class="btn btn-danger btn-sm" >
+                                                <i class="icon-trash bigger-50"></i>删除
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modifyip" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog" style="width:60%">
+             <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h2 class="modal-title">修改IP</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" id="modifyipform" action="<{:U('Create/addHouseHandle')}>" method="POST">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">电信IP: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="mainip" value="" class="col-sm-9">
+                                <input type="hidden" name="id"/>
+                                <span class="col-sm-3 red">必填</span>
+                            </div>
+                            <label class="col-sm-2 control-label text-right">网通IP: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="subip" value="" class="col-sm-9">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">电信网关: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="maingw" value="" class="col-sm-9">
+                                <span class="col-sm-3 red">必填</span>
+                             </div>
+                            <label class="col-sm-2 control-label text-right">网通网关: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="subgw" value="" class="col-sm-9">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">电信掩码: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="mainmask" value="" class="col-sm-9">
+                                <span class="col-sm-3 red">必填</span>
+                            </div>
+                            <label class="col-sm-2 control-label text-right">网通掩码: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="submask" value="" class="col-sm-9">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">所在机房: </label>
+                            <div class="col-md-4 form-inner">
+                                <select  name="houid" class="col-sm-9">
+                                    <option value></option>
+                                    <volist name="house" id="vo">
+                                        <option value="<{$vo.id}>"><{$vo.houname}></option>
+                                    </volist>
+                                </select>
+                                <span class="col-sm-3 red">必填</span>
+                            </div>
+                            <label class="col-sm-2 control-label text-right">状态: </label>
+                            <div class="col-md-4 form-inner">
+                                <select name="state" class="col-sm-9">
+                                    <option value="0">未使用</option>
+                                    <option value="1">已使用</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 text-right">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            </div><div class="col-sm-6 text-left">
+                            <button type="reset" class="btn btn-default">重填</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="type" data-dismiss="modal" class="btn btn-primary">关闭</button>
+                </div>
+             </div>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="addip" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog" style="width:60%">
+             <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h2 class="modal-title">新增IP</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" id="addipform" action="<{:U('Create/addIpHandle')}>" method="POST">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">电信IP: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="mainip" value="" class="col-sm-9">
+                                <input type="hidden" name="id"/>
+                                <span class="col-sm-3 red">必填</span>
+                             </div>
+                             <label class="col-sm-2 control-label text-right">网通IP: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="subip" readonly value="" data-rel="tooltip" data-placement="top" title="不是双线不需要填此项" class="col-sm-9">
+                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">电信掩码: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="mainmask" value="" class="col-sm-9">
+                                <span class="col-sm-3 red">必填</span>
+                             </div>
+                             <label class="col-sm-2 control-label text-right">网通掩码: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="submask" data-rel="tooltip" data-toggle="tooltip" data-placement="top" title="不是双线不需要填此项" readonly value="" class="col-sm-9">
+                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">电信网关: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="maingw" value="" class="col-sm-9">
+                                <span class="col-sm-3 red">必填</span>
+                             </div>
+                            <label class="col-sm-2 control-label text-right">网通网关: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="subgw" data-rel="tooltip" data-placement="top" title="不是双线不需要填此项" readonly value="" class="col-sm-9">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">所在机房: </label>
+                            <div class="col-md-4 form-inner">
+                                <select  name="houid" class="col-sm-9">
+                                    <option value></option>
+                                    <volist name="house" id="vo">
+                                        <option value="<{$vo.id}>"><{$vo.houname}></option>
+                                    </volist>
+                                </select>
+                                <span class="col-sm-3 red">必填</span>
+                             </div>
+                             <label class="col-sm-2 control-label text-right">是否双线: </label>
+                            <div class="col-md-4 form-inner">
+                                <label><input name="duline" value="0" class="ace ace-switch ace-switch-5" type="checkbox" />
+                                <span class="lbl"></span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label text-right">增加IP段: </label>
+                            <div class="col-md-4 form-inner">
+                                <label><input name="where" value="0" class="ace ace-switch ace-switch-5" type="checkbox" />
+                                <span class="lbl"></span></label>
+                            </div>
+                            <label class="col-sm-2 control-label text-right">结束IP: </label>
+                            <div class="col-md-4 form-inner">
+                                <input type="text" name="range" readonly data-rel="tooltip" data-placement="top" title="增加IP段时该项可使用" value="" class="col-sm-9">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 text-right">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            </div><div class="col-sm-6 text-left">
+                            <button type="reset" class="btn btn-default">重填</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="type" data-dismiss="modal" class="btn btn-primary">关闭</button>
+                </div>
+             </div>
+        </div>
+
+    </div>
+
+
+<include file="Admin:foot" />
+<script>
+$(document).ready(function(){
+    // 修改IP状态
+    $("#modifyipform :submit").click(function(){
+        var form = $("#modifyipform").get(0);
+        var message = '';
+        var state = true;
+        if(form.mainip.value.length == 0){
+            message += 'IP地址不能为空.<br>';
+            state = false;
+        }
+        if(form.mainmask.value.length == 0){
+            message += '掩码地址不能为空.<br>';
+            state = false;
+        }
+        if(form.maingw.value.length == 0){
+            message += '网关地址不能为空.<br>';
+            state = false;
+        }
+        if(form.houid.value.length == 0){
+            message += '机房地址不能为空<br>';
+            state = false;
+        }
+        if(state == false){
+            $("#noticediv .modal-title").html("警告");
+            $("#noticediv .modal-body").html(message);
+            $("#noticediv").modal('show');
+            return state;
+        }
+        var url = form.action;
+        var data = $(form).serialize()
+        $.post(url,data,function(ret){
+            $("#modifyip").modal('hide');
+            $("#noticediv .modal-body").html(ret.info);
+            $("#noticediv").modal('show');
+            $("#noticediv").on('hide.bs.modal',function(){
+                if(ret.status == 1){
+                    location.reload();
+                }
+            })
+        },'json');
+        return false;
+    });
+
+    $("#deleteip").on('click',function(){
+        var params = new Array;
+        $("[name^=id][name!=id]").each(function(){
+            if(this.checked){
+                params.push(this.value);
+            }
+        })
+        if(params.length == 0){
+            $("#noticediv .modal-title").text('错误');
+            $("#noticediv .modal-body").html('请选择你要删除的对像');
+            $("#noticediv").modal('show');
+            return false;
+        }
+        var url = "<{:U('Public/deleteip')}>";
+        if(confirm('确认要删除操作吗?')){
+            $.post(url,{id:params},function(ret){
+                $("#noticediv .modal-title").text(ret.info);
+                $("#noticediv .modal-body").html(ret.data);
+                $("#noticediv").modal('show');
+                $("#noticediv").on('hide.bs.modal',function(){
+                    if(ret.status == 1){
+                        location.reload();
+                    }
+                });
+            },'json');
+        }
+    });
+
+    $("#checkall").on('change',function(){
+        var state = this.checked;
+        $("[name^=id][name!=id]").each(function(){
+            this.checked = state;
+        })
+    });
+    $("#cancelall").on('click',function(){
+        $(":checkbox").each(function(){
+            this.checked = false;
+        });
+    });
+
+    $("#otherall").on('change',function(){
+        $("[name^=id][name!=id]").each(function(){
+            this.checked = !this.checked;
+        })
+    });
+
+    // 打开增加面板
+    $("[data-target=addIp]").on('click',function(){
+        $("#addip").modal('show');
+        $("#addip").on('show.bs.modal',function(){
+            $('[data-rel=tooltip]').tooltip();
+        });
+        $("#addip").on('hide.bs.modal',function(){
+            $("#addip :text").each(function(){
+                this.value = '';
+            });
+            $("#addip :checkbox").each(function(){
+                this.checked = false;
+            });
+            $("#addip").off('hide.bs.modal');
+        })
+    });
+    // 增加IP段与双线. 默认关闭
+    $("#addip :checkbox").attr('checked',false);
+    // 增加IP段操作
+    $("#addip input[name=where]").change(function(){
+        var c = this.checked
+        if(c == true){
+            $("#addip input[name=range]").attr('readonly',false);
+            $("#addip input[name=range]").tooltip('destroy');
+            this.value = 1;
+        }else{
+            $("#addip input[name=range]").attr('readonly',true);
+            $("#addip input[name=range]").tooltip();
+            this.value = 0;
+        }
+    });
+    // 增加双线操作.
+    $("input[name=duline]").change(function(){
+        var c = this.checked
+        if (c == true){
+            $("#addip input[readonly][name!=range]").attr('readonly',false);
+            $("#addip input[name!=range]").tooltip('destroy');
+            this.value = 1;
+        }else{
+            $("#addip input[name=subip]").attr('readonly',true).tooltip();
+            $("#addip input[name=submask]").attr('readonly',true).tooltip();
+            $("#addip input[name=subgw]").attr('readonly',true).tooltip();
+            this.value = 0;
+        }
+    });
+
+    var oLanguage={
+        "oAria": {
+            "sSortAscending": ": 升序排列",
+            "sSortDescending": ": 降序排列"
+        },
+        "oPaginate": {
+            "sFirst": "首页",
+            "sLast": "末页",
+            "sNext": "下页",
+            "sPrevious": "上页"
+        },
+        "sEmptyTable": "没有相关记录",
+        "sInfo": "第 _START_ 到 _END_ 条记录，共 _TOTAL_ 条",
+        "sInfoEmpty": "第 0 到 0 条记录，共 0 条",
+        "sInfoFiltered": "(从 _MAX_ 条记录中检索)",
+        "sInfoPostFix": "",
+        "sDecimal": "",
+        "sThousands": ",",
+        "sLengthMenu": "每页显示条数: _MENU_",
+        "sLoadingRecords": "正在载入...",
+        "sProcessing": "正在载入...",
+        "sSearch": "搜索:",
+        "sSearchPlaceholder": "",
+        "sUrl": "",
+        "sZeroRecords": "没有相关记录"
+    }
+    $.fn.dataTable.defaults.oLanguage=oLanguage;
+    $("#dynamic-table").dataTable({
+        ajax: {
+            url: "<{:U('Public/getIpList',$map)}>",
+            dataSrc: 'data',
+            data: function(d){
+                var params = {}
+                params.start = d.start;
+                params.length = d.length;
+                var ordername = d.columns[d.order[0].column].name;
+                params.ordername = ordername;
+                params.orderby = d.order[0].dir;
+                return params
+            },
+            complete:function(){
+                $('[data-rel=tooltip]').tooltip();
+                $("[data-target=deleteip]").on("click",function(){
+                    var id = $(this).attr('sid');
+                    var url = $(this).attr('url');
+                    // console.log(id);
+                    if(confirm('确认要删除操作吗?')){
+                        $.post(url,{id:id},function(ret){
+                            $("#noticediv .modal-title").text(ret.data);
+                            $("#noticediv .modal-body").html(ret.info);
+                            $("#noticediv").modal('show');
+                            $("#noticediv").on('hide.bs.modal',function(){
+                                if(ret.status == 1){
+                                    location.reload();
+                                }
+                            })
+                        },'json');
+                    }
+                });
+                $("[data-target=modifyipstate]").on('click',function(){
+                    var id = $(this).attr('sid');
+                    var form = $("#modifyipform").get(0);
+                    form.action = "<{:U('Public/modifyip')}>";
+                    $.post("<{:U('Public/getIpList')}>",{id:id},function(ret){
+                        if(!(ret.aaData instanceof Array) || ret.aaData.length == 0){
+                            $("#noticediv .modal-title").text('错误');
+                            $("#noticediv .modal-body").html('该IP已经不存在');
+                            $("#noticediv").modal('show');
+                        }else{
+                            form.mainip.value = ret.aaData[0].mainip;
+                            form.mainmask.value = ret.aaData[0].mainmask;
+                            form.maingw.value = ret.aaData[0].maingw;
+                            form.id.value = ret.aaData[0].id;
+                            form.houid.value = ret.aaData[0].houid;
+                            form.state.value = ret.aaData[0].state;
+                            form.subip.value = ret.aaData[0].subip;
+                            form.submask.value = ret.aaData[0].submask;
+                            $("#modifyip").modal('show');
+                        }
+
+                    },'json');
+                });
+            }
+        },
+        ordering: true,
+        bPaginate: true,
+        bServerSide: true,
+        bProcessing:true,
+        bStateSave: false,
+        searching: false,
+        columns: [
+            {data: function(e){
+                var html = "<div class='checkbox'><label><input type='checkbox' name='id[]' value='"+e.id+"'/>" + e.id;
+                html += '</label></div>';
+                return html;
+            },name:"id"},
+            {data: function(e){
+                if(e.state == 1){
+                    return "<a href='"+e.mainipurl+"'>" + e.mainip + "</a>";
+                }else{
+                    return e.mainip;
+                }
+
+            },name:"mainip"},
+            {data: "mainmask",bSortable:false},
+            {data: "maingw",bSortable:false},
+            {data: "createtime",name:"createtime"},
+            {data: function(e){if(e.state == 1) return '<span class="blue">已使用</span>'; else return '未使用'},name:"state"},
+            {data: "houname",name:"houid"},
+            {data:function(e){
+                return '<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">'+
+                            '<a data-rel="tooltip" data-placement="top" sid="'+e.id+'" data-target="modifyipstate" title="修改" class="green" href="javascript:void(0)">'+
+                                '<i class="icon-pencil bigger-130"></i>'+
+                            '</a>'+
+                            '<a data-rel="tooltip" data-placement="top" data-target="deleteip" url="<{:U('Public/deleteip')}>" sid="'+e.id+'" title="删除" class="red" href="javascript:void(0)">'+
+                                '<i class="icon-trash bigger-130"></i>'+
+                            '</a>'+
+                        '</div>';
+            },bSortable:false}
+        ],
+        lengthMenu: [[10,20,40,80 ,-1],[10,20,40,80,'所有']],
+    });
+})
+
+</script>

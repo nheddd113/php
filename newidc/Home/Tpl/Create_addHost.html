@@ -1,0 +1,243 @@
+<include file="Admin:header" />
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+        <div class="main-container">
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <include file="Admin:nav" />
+                <div class="main-content">
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                        </script>
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a href="/index.php">首页</a>
+                            </li>
+                            <li class="active">搜索</li>
+                        </ul><!-- .breadcrumb -->
+
+                        <div class="nav-search" id="nav-search">
+                            <form class="form-search" id="search" method="post" action="<{:U('Search/postHandle')}>">
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <select name="query_type" class="nav-search-input">
+                                            <option <eq name="query_type" value="mainip">selected</eq> value="mainip">服务器IP</option>
+                                            <option <eq name="query_type" value="sertag">selected</eq> value="sertag">服务编码</option>
+                                            <option <eq name="query_type" value="hostid">selected</eq> value="hostid">资产编码</option>
+                                            <option <eq name="query_type" value="remark">selected</eq> value="remark">备注</option>
+                                            <option <eq name="query_type" value="log">selected</eq> value="log">日志</option>
+                                        </select>
+                                    </span>
+                                    <span class="input-icon">
+                                        <input type="text" name="query" value="<{$query}>" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                        <i class="icon-search nav-search-icon"></i>
+                                    </span>
+                                    <span class="input-icon">
+                                        <a href="javascript:$('#search').submit()"><i class="icon-zoom-in bigger-180"></i></a>
+                                    </span>
+                                </div>
+                            </form>
+                        </div><!-- #nav-search -->
+                    </div>
+                    <div class="page-content">
+                        <div class="page-header text-center">
+                            <h1>
+                                新增服务器
+                            </h1>
+                        </div><!-- /.page-header -->
+                        <div class="row">
+                            <div class="text-center" style="padding-bottom:30px;">
+                                <volist name="template" id="vo">
+                                    <button type="button" value="<{$vo.id}>" data-click="selecttemplate" class="btn btn-info"><{$vo.name}></button>&nbsp;&nbsp;
+                                </volist>
+                            </div>
+                            <div class="">
+                                <div class="col-sm-2" ></div>
+                                <div class="col-sm-8">
+                                    <form class="form-horizontal" role="form" id="createhost" action="<{:U('Create/addHostHandle')}>" method="POST">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label text-right">资产编码: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <input type="text" name="hostid" value="" class="col-sm-9">
+                                                <input type="hidden" name="templateid" value="">
+                                                <span class="col-sm-3 red">必填</span>
+                                             </div>
+                                             <label class="col-sm-2 control-label text-right">服务编码: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <input type="text" name="sertag" value="" class="col-sm-9">
+                                                <span class="col-sm-3 red">必填</span>
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label text-right">所属机房: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <select name="houid" class="col-sm-9">
+                                                    <option value=""></option>
+                                                    <volist name="house" id="vo">
+                                                        <option value="<{$vo.id}>"><{$vo.houname}></option>
+                                                    </volist>
+                                                </select>
+                                                <span class="col-sm-3 red">必填</span>
+                                             </div>
+                                             <label class="col-sm-2 control-label text-right">CPU: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <input type="text" name="cpu" value="" class="col-sm-9">
+                                                <span class="col-sm-3 red">必填</span>
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label text-right">硬盘: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <input type="text" name="disk" value="" class="col-sm-9">
+                                                <span class="col-sm-3 red">必填</span>
+                                             </div>
+                                             <label class="col-sm-2 control-label text-right">内存: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <input type="text" name="mem" value="" class="col-sm-9">
+                                                <span class="col-sm-3 red">必填</span>
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label text-right">宿主机: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <label>
+                                                    <input name="ishost" class="ace ace-switch ace-switch-5" type="checkbox" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                             </div>
+                                             <label class="col-sm-2 control-label text-right">托管: </label>
+                                            <div class="col-md-4 form-inner">
+                                                <label>
+                                                    <input name="ismanager"  class="ace ace-switch ace-switch-5" type="checkbox"  />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-6 text-right">
+                                            <button type="submit" class="btn btn-primary">增加</button>
+                                            </div><div class="col-sm-6 text-left">
+                                            <button type="reset" class="btn btn-default">重填</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="noticediv" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h2 class="modal-title">通知</h2>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" value="2" data-dismiss="modal" data-confirm="confirm" class="btn btn-primary">确定</button>
+                    <button type="button" value="1" data-dismiss="modal" data-confirm="confirm" class="btn btn-default">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<include file="Admin:foot" />
+<script>
+$(function(){
+    $('[data-rel=tooltip]').tooltip();
+
+    var oLanguage={
+        "oAria": {
+            "sSortAscending": ": 升序排列",
+            "sSortDescending": ": 降序排列"
+        },
+        "oPaginate": {
+            "sFirst": "首页",
+            "sLast": "末页",
+            "sNext": "下页",
+            "sPrevious": "上页"
+        },
+        "sEmptyTable": "没有相关记录",
+        "sInfo": "第 _START_ 到 _END_ 条记录，共 _TOTAL_ 条",
+        "sInfoEmpty": "第 0 到 0 条记录，共 0 条",
+        "sInfoFiltered": "(从 _MAX_ 条记录中检索)",
+        "sInfoPostFix": "",
+        "sDecimal": "",
+        "sThousands": ",",
+        "sLengthMenu": "每页显示条数: _MENU_",
+        "sLoadingRecords": "正在载入...",
+        "sProcessing": "正在载入...",
+        "sSearch": "搜索:",
+        "sSearchPlaceholder": "",
+        "sUrl": "",
+        "sZeroRecords": "没有相关记录"
+    }
+    $.fn.dataTable.defaults.oLanguage=oLanguage;
+    $("[data-click=selecttemplate]").click(function(){
+        var form = $("#createhost").get(0);
+        var id = $(this).val();
+        var url = "<{:U('Ajax/getTempInfo')}>";
+        $.post(url,{id:id},function(ret){
+            if(ret.status == 1){
+                form.cpu.value = ret.data.cpu;
+                form.mem.value = ret.data.mem+'G';
+                form.disk.value = ret.data.disk + 'G';
+                form.templateid.value = ret.data.id;
+            }
+        },'json');
+    });
+    $(".form-horizontal :submit").click(function(){
+        var form = $(".form-horizontal").get(0);
+        var message = '';
+        var state = true;
+        if(form.hostid.value.length == 0){
+            message += '资产编码不能为空.<br>';
+            state = false;
+        }
+        if(form.sertag.value.length == 0){
+            message += '服务编码不能为空.<br>';
+            state = false;
+        }
+        if(form.houid.value.length == 0){
+            message += '机房不能为空.<br>';
+            state = false;
+        }
+        if(form.disk.value.length == 0){
+            message += '硬盘不能为空.<br>';
+            state = false;
+        }
+        if(form.mem.value.length == 0){
+            message += '内存不能为空.<br>';
+            state = false;
+        }
+        if(form.cpu.value.length == 0){
+            message += 'CPU不能为空.<br>';
+            state = false;
+        }
+        if(state == false){
+            $("#noticediv .modal-title").html("警告");
+            $("#noticediv .modal-body").html(message);
+            $("#noticediv").modal('show');
+
+        }
+        return state;
+    });
+})
+</script>

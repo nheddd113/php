@@ -10,6 +10,20 @@ $home =  array(
 	'LANG_SWITCH_ON' => true,   // 开启语言包功能
 	'LANG_LIST'        => 'zh-cn,en-us', // 允许切换的语言列表 用逗号分隔
 	'DEFAULT_LANG' => 'zh-cn', // 默认语言
+    'SALT_FUN' => array(array('fun'=>'cmd.run','name'=>'执行命令行命令'),
+        array('fun'=>'state.sls','name'=>'执行sls配置'),
+        array('fun'=>'cp.get_file','name'=>'同步文件'),
+        array('fun'=>'cp.get_dir','name'=>'同步目录'),
+        array('fun'=>'uqee_info.startgame','name'=>'开启游戏'),
+        array('fun'=>'uqee_info.shutgame','name'=>'关游戏'),
+        array('fun'=>'uqee_info.getInfo','name'=>'获取服务器信息'),
+        array('fun'=>'saltutil.sync_all','name'=>'同步自定义模块'),
+        array('fun'=>'grains.get','name'=>'获取grains值'),
+        array('fun'=>'grains.delval','name'=>'删除grains值'),
+        array('fun'=>'grains.setval','name'=>'设置grains值'),
+        array('fun'=>'uqee_chkgame.hostname','name'=>'修改主机名'),
+        array('fun'=>'test.ping','name'=>'测试主机存在'),
+        array('fun'=>'uqee_chkgame.checkgame','name'=>'检查服务器是否有游戏在运行'),),
 );
 $config = require_once('./config_inc.php');
 return array_merge($home,$config);

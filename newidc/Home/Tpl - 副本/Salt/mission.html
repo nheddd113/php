@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<js href="__PUBLIC__/js/jquery.js" />
+<js href="__PUBLIC__/js/salt.js" />
+<script src="__PUBLIC__/js/artDialog/jquery.artDialog.js?skin=blue"></script>
+<css href="__PUBLIC__/style/salt.css" />
+<script>
+</script>
+<body>
+<form action="#" method="POST">
+    <table id="addmaster">
+        <tr id="firstline"><td colspan="4">任务查询
+            <span id="return"><a href="javascript:history.go(-1)">返回</a><span>
+        </td></tr>
+        <tr>
+        <td id="notifytd">查询方式：</td>
+            <td><select name="query_method">
+                <option value="0">请选择</option>
+                <option value="glob">Minion ID</option>
+                <option value="ipcidr">服务器IP</option>
+                <option value="jid">任务ID</option>
+            </select>
+            <input type="text" name='value' value=""/></td>
+        <td id="notifytd">查询方式：</td>
+            <td><select name="query_method">
+                <option value="0">请选择</option>
+                <option value="glob">Minion ID</option>
+                <option value="ipcidr">服务器IP</option>
+                <option value="jid">任务ID</option>
+            </select>
+            <input type="text" name='value' value=""/></td>
+        </tr>
+        <tr>
+        <td colspan="2" style="text-align:right;padding-right:5px;">
+        <input type="submit"/>
+        </td><td colspan="2">
+        <input type="reset"/>
+        </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

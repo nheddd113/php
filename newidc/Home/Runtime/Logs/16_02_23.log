@@ -1,0 +1,230 @@
+[ 2016-02-23T11:41:52+08:00 ] 127.0.0.1 /index.php?m=Hostinfo&a=hostinfo&id=54
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.011001s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.014002s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.025003s ]
+NOTIC: [8] Undefined index: _URL_ D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `uqee_notify` [ RunTime:0.013501s ]
+SQL: SELECT `state` FROM `uqee_notify` LIMIT 1   [ RunTime:0.000500s ]
+SQL: SHOW COLUMNS FROM `uqee_hostlist` [ RunTime:0.027504s ]
+SQL: SELECT * FROM `uqee_hostlist` WHERE ( `id` = 54 ) LIMIT 1   [ RunTime:0.006001s ]
+SQL: SHOW COLUMNS FROM `uqee_cupboard` [ RunTime:0.021502s ]
+SQL: SELECT * FROM `uqee_cupboard` WHERE ( `houid` = 14 )  [ RunTime:0.000501s ]
+SQL: SHOW COLUMNS FROM `uqee_seat` [ RunTime:0.018502s ]
+SQL: SELECT `seatid` FROM `uqee_seat` WHERE ( `cupid` = 4 ) AND ( `state` = 0 )  [ RunTime:0.043505s ]
+SQL: SHOW COLUMNS FROM `uqee_game` [ RunTime:0.013502s ]
+SQL: SELECT * FROM `uqee_game`  [ RunTime:0.000500s ]
+SQL: SELECT * FROM `uqee_hostlist`  [ RunTime:0.032504s ]
+SQL: SHOW COLUMNS FROM `uqee_house` [ RunTime:0.007501s ]
+SQL: SELECT * FROM `uqee_house` ORDER BY place  [ RunTime:0.007501s ]
+SQL: SELECT * FROM `uqee_cupboard`  [ RunTime:0.000500s ]
+SQL: SHOW COLUMNS FROM `uqee_ops` [ RunTime:0.022003s ]
+SQL: SELECT * FROM `uqee_ops`  [ RunTime:0.011501s ]
+SQL: SHOW COLUMNS FROM `uqee_hosttemplate` [ RunTime:0.013001s ]
+SQL: SELECT * FROM `uqee_hosttemplate`  [ RunTime:0.000500s ]
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: id D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+NOTIC: [8] Undefined index: cupname D:\phpsite\idc\Home\Lib\Action\CommonAction.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `uqee_hostlist` [ RunTime:0.003501s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 0 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 0 ) AND ( `status` = 0 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 0 ) AND ( `hostype` = 1 ) LIMIT 1   [ RunTime:0.001501s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 0 ) AND ( `hostype` = 2 ) LIMIT 1   [ RunTime:0.001500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 1 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 0 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 0 ) AND ( `status` = 0 ) LIMIT 1   [ RunTime:0.002001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 0 ) AND ( `hostype` = 1 ) LIMIT 1   [ RunTime:0.001500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 0 ) AND ( `hostype` = 2 ) LIMIT 1   [ RunTime:0.001500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 1 ) LIMIT 1   [ RunTime:0.001500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 2 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001501s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 2 ) AND ( `status` = 0 ) LIMIT 1   [ RunTime:0.001500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 2 ) AND ( `hostype` = 1 ) LIMIT 1   [ RunTime:0.001500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 0 ) AND ( `ishost` = 2 ) AND ( `hostype` = 2 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 2 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.002501s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 2 ) AND ( `status` = 0 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 2 ) AND ( `hostype` = 1 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `uqee_hostlist` WHERE ( `ismanager` = 1 ) AND ( `ishost` = 2 ) AND ( `hostype` = 2 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `uqee_hosttemplate` [ RunTime:0.003001s ]
+SQL: SELECT * FROM `uqee_hosttemplate`  [ RunTime:0.000000s ]
+SQL: SELECT * FROM `uqee_hostlist` WHERE ( `id` = 54 ) LIMIT 1   [ RunTime:0.000500s ]
+SQL: SELECT `hostid` FROM `uqee_hostlist` WHERE ( `parentid` = 54 )  [ RunTime:0.001500s ]
+SQL: SHOW COLUMNS FROM `uqee_log` [ RunTime:0.023503s ]
+SQL: SELECT * FROM `uqee_log` WHERE ( `hostdbid` = 54 ) ORDER BY logtime desc  [ RunTime:0.059508s ]
+SQL: SHOW COLUMNS FROM `uqee_iplist` [ RunTime:0.005501s ]
+SQL: SELECT * FROM `uqee_iplist` WHERE ( `houid` = 14 )  [ RunTime:0.061507s ]
+NOTIC: [8] Undefined variable: superIp D:\phpsite\idc\Home\Lib\Action\HostinfoAction.class.php 第 83 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\phpsite\idc\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\phpsite\idc\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 692 行.
+NOTIC: [8] Undefined index: houid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 700 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined index: cupid D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 701 行.
+NOTIC: [8] Undefined variable: query_type D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 739 行.
+NOTIC: [8] Undefined variable: query_type D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 740 行.
+NOTIC: [8] Undefined variable: query_type D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 741 行.
+NOTIC: [8] Undefined variable: query_type D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 742 行.
+NOTIC: [8] Undefined variable: query_type D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 743 行.
+NOTIC: [8] Undefined variable: query D:\phpsite\idc\Home\Runtime\Cache\a3641effc05e9bcd501130cb27c6146c.php 第 747 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.148519s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.148519s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.004500s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.023503s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000500s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001501s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.030504s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000500s ]
+

@@ -1,0 +1,35 @@
+.h50{
+    height: 50px;
+}
+.table tbody>tr>td{
+    vertical-align:middle;
+}
+.form-inner{
+    height: 31px;
+    line-height: 31px;
+}
+a:hover{
+    text-decoration: none
+}
+a{
+    color: #0089FF;
+}
+body{
+    color: #333;
+
+}
+h1,h2,h3,h4,h5,h6{
+    margin:0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+.form-control, input,select{
+    color: #000!important;
+}
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+    border: 1px solid rgb(120, 168, 228);;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+    font-family: 宋体;
+}

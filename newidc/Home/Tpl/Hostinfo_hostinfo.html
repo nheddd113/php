@@ -1,0 +1,491 @@
+
+<include file="Admin:header" />
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+        <div class="main-container">
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <include file="Admin:nav" />
+                <div class="main-content">
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                        </script>
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a href="/index.php">首页</a>
+                            </li>
+                            <li class="active">主机修改</li>
+                        </ul><!-- .breadcrumb -->
+
+                        <div class="nav-search" id="nav-search">
+                            <form class="form-search" id="search" method="post" action="<{:U('Search/postHandle')}>">
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <select name="query_type" class="nav-search-input">
+                                            <option <eq name="query_type" value="mainip">selected</eq> value="mainip">服务器IP</option>
+                                            <option <eq name="query_type" value="sertag">selected</eq> value="sertag">服务编码</option>
+                                            <option <eq name="query_type" value="hostid">selected</eq> value="hostid">资产编码</option>
+                                            <option <eq name="query_type" value="remark">selected</eq> value="remark">备注</option>
+                                            <option <eq name="query_type" value="log">selected</eq> value="log">日志</option>
+                                        </select>
+                                    </span>
+                                    <span class="input-icon">
+                                        <input type="text" name="query" value="<{$query}>" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                        <i class="icon-search nav-search-icon"></i>
+                                    </span>
+                                    <span class="input-icon">
+                                        <a href="javascript:$('#search').submit()"><i class="icon-zoom-in bigger-180"></i></a>
+                                    </span>
+                                </div>
+                            </form>
+                        </div><!-- #nav-search -->
+                    </div>
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h1 class="text-center"> 服务器修改 </h1>
+                        </div>
+                        <div class="">
+                            <form method="POST" id="hostinfoFrom" action="<{:U('Home/Hostinfo/changeHost')}>" >
+                            <table class="table table-bordered">
+                                <eq name="hostinfo.ishost" value="2">
+                                    <caption class="text-right"><h4>宿主机IP:
+                                        <a href="<{:U('Hostinfo/hostinfo',array('id'=>$hostinfo[parentid]))}>">
+                                        <{$master.mainip}>
+                                        </a></h4>
+                                    </caption>
+                                </eq>
+                                <tbody>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">资产编码: </td>
+                                    <td class="col-xs-3">
+                                        <input class="col-sm-12" readonly <eq name="hostinfo.ishost" value="2">disabled</eq> type="text" name="hostid" value="<{$hostinfo.hostid}>">
+                                        <input type="hidden" name="id" value="<{$hostinfo.id}>">
+                                    </td>
+                                    <td class="col-sm-1  text-right">服务编码:</td>
+                                    <td  class="col-xs-3"><input readonly type="text" <eq name="hostinfo.ishost" value="2">disabled</eq> class="col-sm-12" name="sertag" value="<{$hostinfo.sertag}>"></td>
+                                    <td class="col-sm-1  text-right">机柜:</td>
+                                    <td class="col-xs-3">
+                                        <select name="cupid" class="col-sm-12" data-url="<{:U('Ajax/seatid')}>" <eq name="hostinfo.ishost" value="2">onmousedown="return false;"</eq>>
+                                            <option value=""></option>
+                                            <volist name="cupBorard[$hostinfo['houid']]" id="vo">
+                                                <option value="<{$vo.id}>" <eq name="vo.id" value="$hostinfo.cupid">selected</eq>><{$vo.cupname}></option>
+                                            </volist>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">电信IP: </td>
+                                    <td class="col-sm-2">
+                                        <select name="mainip" style="width:100%" data-placeholder="请输入服务器IP" class="width-100 chosen-select">
+                                            <option value=""></option>
+                                            <volist name="iplist" id="vo">
+                                                <option value="<{$vo.mainip}>" subip="<{$vo.subip}>" <eq name="vo.mainip" value="$hostinfo.mainip">selected</eq>><{$vo.mainip}></option>
+                                            </volist>
+                                        </select>
+                                    </td>
+                                    <td class="col-sm-1  text-right">网通IP:</td>
+                                    <td><input type="text" class="col-sm-12 input" name="subip" value="<{$hostinfo.subip}>"></td>
+                                    <td class="col-sm-1  text-right">内网IP:</td>
+                                    <td><input type="text" class="col-sm-12 input" name="innip" value="<{$hostinfo.innip}>"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">CPU: </td>
+                                    <td><input type="text" class="col-sm-12 input" name="cpu" value="<{$hostinfo.cpu}>"></td>
+                                    <td class="col-sm-1  text-right">内存:</td>
+                                    <td>
+                                            <input type="text" class="col-sm-12 input" name="mem" value="<{$hostinfo.mem}>G">
+                                    </td>
+                                    <td class="col-sm-1  text-right">硬盘:</td>
+                                    <td><input type="text" class="col-sm-12 input" name="disk" value="<{$hostinfo.disk}>G"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">服务状态: </td>
+                                    <td>
+                                        <select name="status" class="col-sm-12">
+                                            <option value="1" <eq name="hostinfo.status" value="1">selected</eq>>闲置</option>
+                                            <option value="2" <eq name="hostinfo.status" value="2">selected</eq>>上架</option>
+                                            <option value="0" <eq name="hostinfo.status" value="0">selected</eq>>下架</option>
+                                        </select>
+                                    </td>
+                                    <td class="col-sm-1  text-right">服务类型:</td>
+                                    <td>
+                                        <select name="hostype" class="col-sm-12">
+                                            <option value="0" <eq name="hostinfo.hostype" value="0">selected</eq>>非运营</option>
+                                            <option value="1" <eq name="hostinfo.hostype" value="1">selected</eq>>申请</option>
+                                            <option value="2" <eq name="hostinfo.hostype" value="2">selected</eq>>运营</option>
+                                        </select>                                    </td>
+                                    <td class="col-sm-1  text-right">服务器:</td>
+                                    <td>
+                                        <select name="ishost" class="col-sm-12" <eq name="hostinfo.ishost" value="2">onmousedown="return false;"</eq>>
+                                            <option value=""></option>
+                                            <volist name="ishostArr" id="vo">
+                                                <option value="<{$key}>" <eq name="key" value="$hostinfo.ishost">selected</eq>><{$vo}></option>
+                                            </volist>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">运营商: </td>
+                                    <td class="col-xs-3">
+                                        <select name="owner" style="width:96.5%" data-placeholder="请选择运营商"  class="chosen-select">
+                                            <option value=""></option>
+                                            <volist name="OpsArray" id="vo">
+                                                <option value="<{$vo.seq}>" <eq name="vo.seq" value="$hostinfo.owner">selected</eq>><{$vo.name}></option>
+                                            </volist>
+                                        </select>
+                                    </td>
+                                    <td class="col-sm-1  text-right">运营时间:</td>
+                                    <td>
+                                        <input type="text" readonly class="col-sm-12 input" data-rel="tooltip" readonly data-placement="top" title="运营时间不可修改" name="starttime" value="<{$hostinfo.starttime}>">
+                                    </td>
+                                    <td class="col-sm-1  text-right">预定运营时间:</td>
+                                    <td>
+                                        <input type="text" class="col-sm-12 form_datetime" name="pretime" value="<{$hostinfo.pretime}>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">所属机房: </td>
+                                    <td>
+                                        <input type="text" class="col-sm-12" data-rel="tooltip" readonly data-placement="top" title="机房地址不可修改, 可使用寄出功能进行修改" value="<{$houseInfo[$hostinfo['houid']]['houname']}>"/>
+
+                                    </td>
+                                    <td class="col-sm-1  text-right">所属用途:</td>
+                                    <td>
+                                        <select name="gameid" class="col-sm-12" >
+                                            <option value=""></option>
+                                            <volist name="gameCode" id="vo">
+                                                <option value="<{$vo.id}>" <eq name="vo.id" value="$hostinfo.gameid">selected</eq>><{$vo.name}></option>
+                                            </volist>
+                                        </select>
+                                    </td>
+                                    <td class="col-sm-1  text-right">创建时间:</td>
+                                    <td>
+                                        <input type="text" disabled class="col-sm-12 form_datetime" name="createtime" value="<{$hostinfo.createtime}>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">是否托管: </td>
+                                    <td>
+                                    <div class="">
+                                        <label>
+                                            <input name="ismanager" <eq name="hostinfo.ishost" value="2">disabled</eq> class="ace ace-switch ace-switch-5" type="checkbox" <eq name="hostinfo.ismanager" value="1">checked</eq>  />
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </div>
+                                    </td>
+                                    <td class="col-sm-1  text-right">操作系统:</td>
+                                    <td>
+                                        <input type="text" name="system" class="col-sm-12" value="<{$hostinfo.system}>">
+
+                                    </td>
+                                    <td class="col-sm-1  text-right">Salt UUID:</td>
+                                    <td>
+                                        <div>
+                                            <input type="text" data-rel="tooltip" readonly data-placement="top" title="UUID为自动获取,不能手动更新." class="col-sm-12" name="uuid" value="<{$hostinfo.uuid}>">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1  text-right ">备注: </td>
+                                    <td>
+                                        <input class="col-sm-12" type="text" name="remark" value="<{$hostinfo.remark}>" />
+                                    </td>
+                                    <td class="col-sm-1  text-right ">服务器名称: </td>
+                                    <td>
+                                        <input class="col-sm-12" type="text" />
+                                    </td>
+                                    <td class="col-sm-1  text-right">所运行的游戏:</td>
+                                    <td>
+                                        <input type="text" name="rungame" class="col-sm-12" value="">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <div class="">
+                                        <button type="button" class="btn btn-info">获取UUID</button>
+                                        <button type="button" class="btn btn-info">获取主机名</button>
+                                        <button type="button" class="btn btn-info">获取游戏名</button>
+                                        <button type="button" class="btn btn-info">同步salt文件</button>
+                                        <button type="button" class="btn btn-info">执行salt命令</button>
+                                        <button type="button" class="btn btn-info">查看salt日志</button>
+                                        <eq name="hostinfo.ishost" value="1">
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#add_virhost_div">增加虚拟机</button></eq>
+                                        <button class="btn btn-primary pull-right" type="submit">修改服务器</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </form>
+                        </div>
+                        <div class="page-header">
+                            <h4>服务器操作</h4>
+                        </div>
+                        <div class="">
+                            <div class="col-sm-2"><button class="btn btn-info col-sm-10" data-button="systemop" href="<{:U('Hostinfo/systemOp')}>" status="4">关闭游戏</button></div>
+                            <div class="col-sm-2"><button class="btn btn-info col-sm-10" data-button="systemop" href="<{:U('Hostinfo/systemOp')}>" status="5">开启游戏</button></div>
+                            <div class="col-sm-2"><button class="btn btn-info col-sm-10" data-button="systemop" href="<{:U('Hostinfo/systemOp')}>" status="6">服务器信息</button></div>
+                            <div class="col-sm-2"><button class="btn btn-info col-sm-10" data-button="systemop" href="<{:U('Hostinfo/systemOp')}>" status="1">清档</button></div>
+                            <div class="col-sm-2"><button class="btn btn-info col-sm-10" data-button="systemop" href="<{:U('Hostinfo/systemOp')}>" status="3">寄出</button></div>
+                            <div class="col-sm-2">&nbsp;</div>
+                        </div>
+                        <!-- 虚拟机列表 -->
+
+                        <div class="page-header">&nbsp;</div>
+                        <eq name="hostinfo.ishost" value="1">
+                            <div class="page-header">
+                                <input type="button" class="btn btn-white" id="toggle_virhost" value="显示/隐藏虚拟机列表"/>
+                            </div>
+                            <div id="virhostdiv">
+                                <table id="dynamic-table" class="table table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th class="col-sm-2">虚拟机标识</th>
+                                            <th class="col-sm-1">电信IP</th>
+                                            <th class="col-sm-1">所属用途</th>
+                                            <th class="col-sm-2">所属机房</th>
+                                            <th class="col-sm-1">运营商</th>
+                                            <th class="col-sm-1">状态</th>
+                                            <th class="col-sm-3">备注</th>
+                                            <th class="col-sm-1">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <volist name="virHostInfo" id="vo">
+                                        <tr>
+                                            <td><{$vo.hostid}></td>
+                                            <td><{$vo.mainip}></td>
+                                            <td><{$vo.gamename}></td>
+                                            <td><{$vo.housename}></td>
+                                            <td><{$vo.ownername}></td>
+                                            <td><{$vo.status}></td>
+                                            <td><{$vo.remark}></td>
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                    <a data-rel="tooltip" data-placement="top" title="修改" class="green" href="<{:U('Hostinfo/hostinfo',array('id'=>$vo['id']))}>">
+                                                        <i class="icon-pencil bigger-130"></i>
+                                                    </a>
+                                                    <a data-rel="tooltip" data-target="deleteVirHost" url="<{:U('Hostinfo/deleteHost')}>" sid="<{$vo.id}>" data-placement="top" title="删除" class="red" href="javascript:void(0)">
+                                                        <i class="icon-trash bigger-130"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </volist>
+                                    </tbody>
+                                </table>
+                            <div class="page-header">&nbsp;</div>
+                            </div>
+                        </eq>
+                        <!-- 日志列表 -->
+                        <div class="page-header">
+                            <input type="button" class="btn btn-white" id="toggle_loglist" value="显示/隐藏日志"/>
+
+                        </div>
+                        <div id="loglistdiv">
+                            <table id="log-table" class="table table-bordered">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="col-sm-1">序号</th>
+                                        <th class="col-sm-1">电信IP</th>
+                                        <th class="col-sm-1">服务器标识</th>
+                                        <th class="col-sm-1">被更换服务器</th>
+                                        <th class="col-sm-5">操作内容</th>
+                                        <th class="col-sm-2">操作时间</th>
+                                        <th class="col-sm-1">操作者</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <volist name="log_data" id="vo">
+                                    <tr>
+                                        <td><{$key + 1}></td>
+                                        <td><{$vo.serip}></td>
+                                        <td><{$vo.hostid}></td>
+                                        <td><a href="<{:U('Hostinfo/hostinfo',array('hostid'=>$vo['chghostid']))}>"><{$vo.chghostid}></a></td>
+                                        <td><{$vo.content}></td>
+                                        <td><{$vo.logtime}></td>
+                                        <td><{$vo.handler}></td>
+                                    </tr>
+                                    </volist>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="noticedivHostinfo" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h2 class="modal-title">通知</h2>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" value="2" data-dismiss="modal" data-confirm="confirm" class="btn btn-primary">确定</button>
+                    <button type="button" value="1" data-dismiss="modal" data-confirm="confirm" class="btn btn-default">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="jichu" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h2 class="modal-title">服务器寄出操作</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group form-inner">
+                        <lable class="control-label text-right col-sm-3">寄到机房:</lable>
+                        <div class="col-sm-9">
+                            <select name="houid">
+                                <option></option>
+                                <volist name="houseInfo" id="vo">
+                                    <option value="<{$vo.id}>"><{$vo.houname}></option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" value="2" data-dismiss="modal" data-confirm="confirm1" class="btn btn-primary">确定</button>
+                    <button type="button" value="1" data-dismiss="modal" data-confirm="confirm1" class="btn btn-default">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="server_switch" tabindex="-1" role="dialog" aria-labelledby="add_virhost"
+        data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h2 class="modal-title">该IP已被服务器使用</h2>
+                </div>
+                <div class="modal-body">
+                    该IP已被服务器: 使用,根据你的需要选择以下操作!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" value="switch" data-dismiss="modal" data-confirm="switchip" class="btn btn-primary">互换信息</button>
+                    <button type="button" value="chgip" data-dismiss="modal" data-confirm="switchip" class="btn btn-default">互换IP</button>
+                    <button type="button" value="chgdown" data-dismiss="modal" data-confirm="switchip" class="btn btn-default">将其下架</button>
+                    <button type="button" value="cancel" data-dismiss="modal" data-confirm="switchip" class="btn btn-default">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="add_virhost_div" tabindex="-1" role="dialog" aria-labelledby="add_virhost"
+        data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog " style="width:50%">
+            <div class="modal-content">
+                <form class="form-horizontal" action="<{:U('Create/addVirHandle')}>" method="POST" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                       data-dismiss="modal" aria-hidden="true">
+                          &times;
+                    </button>
+                    <h1 class="modal-title">
+                        增加虚拟机
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group ">
+                         <label class="col-sm-2 control-label">标识符: </label>
+                         <div class="col-md-4 form-inner">
+                            <input type="hidden" name="parentid" value="<{$hostinfo['id']}>" />
+                            <input type="text" readonly name="hostid" value="<{$max_hostid}>" class="col-sm-8">
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                         <label class="col-sm-2 control-label">机房: </label>
+                         <div class="col-sm-4  form-inner">
+                            <input type="text" disabled value="<{$houseInfo[$hostinfo['houid']]['houname']}>" class="col-sm-8">
+                            <input type="hidden" name="houid" value="<{$hostinfo.houid}>" />
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                    </div>
+                    <div class="form-group">
+                         <label class="col-sm-2 control-label">机柜: </label>
+                         <div class="col-md-4 form-inner">
+                            <input type="text" disabled value="<{$cupBorard[$hostinfo['houid']][$hostinfo['cupid']]['cupname']}>" class="col-sm-8">
+                            <input type="hidden" name="cupid" value="<{$hostinfo.cupid}>" />
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                         <label class="col-sm-2 control-label">机位: </label>
+                         <div class="col-sm-4  form-inner">
+                            <input type="hidden" name="seatid" value="<{$hostinfo.seatid}>" />
+                            <input type="text" disabled value="<{$hostinfo.seatid}>" class="col-sm-8">
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                    </div>
+                    <div class="form-group">
+                         <label class="col-sm-2 control-label">CPU: </label>
+                         <div class="col-md-4 form-inner">
+                            <input type="text" disabled name="cpu" value="<{$hostinfo.cpu}>" class="col-sm-8">
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                         <label class="col-sm-2 control-label">硬盘: </label>
+                         <div class="col-md-4 form-inner">
+                            <input type="text" name="disk" class="col-sm-8">
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                    </div>
+                    <div class="form-group">
+                         <label class="col-sm-2 control-label">内存: </label>
+                         <div class="col-sm-4  form-inner">
+                            <input type="text" name="mem" class="col-sm-8">
+                            <span class="col-sm-4 red">必填</span>
+                         </div>
+                         <label class="col-sm-2 control-label">增加数量: </label>
+                         <div class="col-sm-4  form-inner">
+                            <input type="text" name="number" value="1" class="col-sm-8">
+                            <span class="col-sm-4 blue">选填</span>
+                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">增加虚拟机</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<include file="Admin:foot" />
+
+<script type="text/javascript">
+    var getHostInfoUrl = "<{:U('Ajax/getHostInfo')}>";
+    var switchInfoUrl = "<{:U('Home/Ajax/handleHost')}>";
+</script>
+
+
+<import type="js" file="js.hostinfo" />
+
